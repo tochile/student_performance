@@ -1,0 +1,82 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+   <div class="container">
+        <h1 class="text-center text-danger mt-5 pt-5">STUDENT'S ACADEMIC PERFORMANCE</h1>
+    </div><br>
+        <div class="elechi" >
+          <img src="{{url_for('static',filename='../static/images/images.jpeg')}}" style="width: 1500px; height: 400px;">
+        </div>
+    
+    <div class="row" style="width: 2000px;">
+          <form class="form-group text-center" action="{{url_for('predict')}}" method="POST">
+           
+        <div class="col-md-4">
+            <label>Raised Hand</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="raisedhands">
+           <label>Visited Resources</label><br>
+           <input type="text" name="visited_resource" class="form-control" style="width:600px;">
+           <label>Announcement  View</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="announcement"> 
+           <label>Discussion</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="discussion">
+           <label>Biology</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="biology">
+           <label>Chemistry</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="chemistry">
+           <label>Englis Language</label>
+           <input type="text" class="form-control" style="width:600px;" name="english">
+           <label>French</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="french">
+           <label>Geology</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="geology">
+         
+        </div>
+        
+    
+    <div class="col-md-4" style="margin-left:110px;">
+          
+       
+           <label>History</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="history">
+           <label>Industrial Training</label><br>
+           <input type="text" name="IT" class="form-control" style="width:600px;">
+           <label>Mathematics</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="maths"> 
+           <label>CRS</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="crs">
+           <label>Science</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="science">
+           <label>Computer Study</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="computer"><br>
+           <label>Semester/label><br>
+           <input type="text" class="form-control" style="width:600px;" name="semester">
+           <label>Absent Days (1: Under 7, 0:Above 7</label><br>
+           <input type="text" class="form-control" style="width:600px;" name="abs"><br>
+          
+        </div>
+        <input type="submit"  value="Predict" class="btn btn-danger text-center" style="margin-top: 30px; margin-right: 520px;">
+        </form><br><br>
+        
+    </div> 
+    </div>
+    <div>
+    </div>
+
+
+         <h1 class="text-center text-white mt-5 pt-5">Result </h1>
+    <div class="result btn-danger text-center" style="height: 30px;">
+        {% if prediction == 1%}
+        <h2> You will have a bad performance</h2>
+        {% elif prediction == 0%}
+        <h2> You have a bad performance</h2>
+        
+        {% endif %}
+        
+    </div>  
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+{% endblock %}
